@@ -1,2 +1,2 @@
 # calculator-app
-Basic calculator desktop app prototype
+Basic calculator web app 
