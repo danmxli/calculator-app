@@ -7,7 +7,11 @@ root = Tk()
 # entry widget for user
 userEntry = Entry(root, width=45, borderwidth=7)
 
-# error handling invalid user input function
+# populate entry with number widget
+def clickNumber(num):
+    temp = userEntry.get()
+    userEntry.delete(0, END)
+    userEntry.insert(0, str(temp) + str(num))
 
 # do operation function definition, only two parameters
 def equalOperation():
@@ -40,7 +44,7 @@ def sqrtSign():
     global operationSign
 
 # number buttons
-button_1 = Button(root, text="1", height=5, width=7)
+button_1 = Button(root, text="1", height=5, width=7, command=lambda: clickNumber(1))
 button_2 = Button(root, text="2", height=5, width=7)
 button_3 = Button(root, text="3", height=5, width=7)
 button_4 = Button(root, text="4", height=5, width=7)
