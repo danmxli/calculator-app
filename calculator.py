@@ -52,7 +52,7 @@ exp_icon = PhotoImage(file=r"C:\Users\danmu\my_projects\calculator-app\calculato
 sqrt_icon = PhotoImage(file=r"C:\Users\danmu\my_projects\calculator-app\calculator_icons\sqrt.png")
 equals_icon = PhotoImage(file=r"C:\Users\danmu\my_projects\calculator-app\calculator_icons\equals.png")
 
-# number buttons
+# numeric buttons
 button_1 = Button(root, text="1", height=5, width=7, command=lambda: clickNumber(1))
 button_2 = Button(root, text="2", height=5, width=7)
 button_3 = Button(root, text="3", height=5, width=7)
@@ -63,6 +63,8 @@ button_7 = Button(root, text="7", height=5, width=7)
 button_8 = Button(root, text="8", height=5, width=7)
 button_9 = Button(root, text="9", height=5, width=7)
 button_0 = Button(root, text="0", height=5, width=7)
+button_decimal = Button(root, text=".", height=5, width=7)
+button_sign = Button(root, text="+/-", height=5, width=7)
 
 # operation buttons
 button_add = Button(root, height=60, width=60, image=add_icon)
@@ -90,6 +92,9 @@ button_2.grid(row=3, column=5)
 button_3.grid(row=3, column=6)
 
 button_0.grid(row=4, column=5)
+
+button_decimal.grid(row=4, column=4)
+button_sign.grid(row=4, column=6)
 
 button_add.grid(row=2, column=0)
 button_subtract.grid(row=3, column=0)
