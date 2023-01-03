@@ -10,22 +10,34 @@ userEntry = Entry(root, width=30, borderwidth=7, font=('Arial 20'))
 
 # populate entry with number widget
 def clickNumber(num):
+    global operationSign
     temp = userEntry.get()
     userEntry.delete(0, END)
     userEntry.insert(0, str(temp) + str(num))
+
+
+# clear operation function
+def clearOperation():
+    global userInput
+    global operationSign
+    userInput = 0
+    operationSign == " "
+    userEntry.delete(0, END)
 
 # do operation function definition, only two parameters // test
 def equalOperation():
     global userInput
     global operationSign
-    temp = userEntry.get()
+    
+    rightArugment = userEntry.get()
+    
     userEntry.delete(0, END)
     if operationSign == "+":
-        userEntry.insert(0, int(userInput) + int(temp))
+        userEntry.insert(0, int(userInput) + int(rightArugment))
     if operationSign == "-":
-        userEntry.insert(0, int(userInput) - int(temp))
+        userEntry.insert(0, int(userInput) - int(rightArugment))
     if operationSign == "*":
-        userEntry.insert(0, int(userInput) * int(temp))
+        userEntry.insert(0, int(userInput) * int(rightArugment))
     
 
 # store user entry function
@@ -70,15 +82,15 @@ equals_icon = PhotoImage(file=r"C:\Users\danmu\my_projects\calculator-app\calcul
 
 # numeric buttons
 button_1 = Button(root, text="1", height=5, width=7, command=lambda: clickNumber(1))
-button_2 = Button(root, text="2", height=5, width=7)
-button_3 = Button(root, text="3", height=5, width=7)
-button_4 = Button(root, text="4", height=5, width=7)
-button_5 = Button(root, text="5", height=5, width=7)
-button_6 = Button(root, text="6", height=5, width=7)
-button_7 = Button(root, text="7", height=5, width=7)
-button_8 = Button(root, text="8", height=5, width=7)
-button_9 = Button(root, text="9", height=5, width=7)
-button_0 = Button(root, text="0", height=5, width=7)
+button_2 = Button(root, text="2", height=5, width=7, command=lambda: clickNumber(2))
+button_3 = Button(root, text="3", height=5, width=7, command=lambda: clickNumber(3))
+button_4 = Button(root, text="4", height=5, width=7, command=lambda: clickNumber(4))
+button_5 = Button(root, text="5", height=5, width=7, command=lambda: clickNumber(5))
+button_6 = Button(root, text="6", height=5, width=7, command=lambda: clickNumber(6))
+button_7 = Button(root, text="7", height=5, width=7, command=lambda: clickNumber(7))
+button_8 = Button(root, text="8", height=5, width=7, command=lambda: clickNumber(8))
+button_9 = Button(root, text="9", height=5, width=7, command=lambda: clickNumber(9))
+button_0 = Button(root, text="0", height=5, width=7, command=lambda: clickNumber(0))
 button_decimal = Button(root, text=".", height=5, width=7)
 button_sign = Button(root, text="+/-", height=5, width=7)
 
@@ -91,10 +103,12 @@ button_exp = Button(root, text="^", height=4, width=7)
 button_sqrt = Button(root, text="r", height=4, width=7)
 
 button_equals = Button(root, height=50, width=350, image= equals_icon, command= lambda: equalOperation())
+button_clear = Button(root, text="CLEAR", command=lambda: clearOperation())
 
 # put onto root window
 userEntry.grid(row=0, column=0)
 button_equals.grid(row=1,column=0)
+button_clear.grid(row=0, column=1)
 
 button_7.grid(row=1, column=4)
 button_8.grid(row=1, column=5)
