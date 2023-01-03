@@ -21,7 +21,12 @@ def equalOperation():
     temp = userEntry.get()
     userEntry.delete(0, END)
     if operationSign == "+":
-        userEntry.insert(0, int(temp) + int(userInput))
+        userEntry.insert(0, int(userInput) + int(temp))
+    if operationSign == "-":
+        userEntry.insert(0, int(userInput) - int(temp))
+    if operationSign == "*":
+        userEntry.insert(0, int(userInput) * int(temp))
+    
 
 # store user entry function
 def storeEntry():
@@ -35,15 +40,15 @@ def addSign():
     operationSign = "+"
     storeEntry()
 
-
 def subtractSign():
     global operationSign
-    perationSign = "-"
+    operationSign = "-"
     storeEntry()
 
 def multiplySign():
-    global userInput
     global operationSign
+    operationSign = "*"
+    storeEntry()
 
 def divideSign():
     global operationSign
@@ -77,10 +82,10 @@ button_0 = Button(root, text="0", height=5, width=7)
 button_decimal = Button(root, text=".", height=5, width=7)
 button_sign = Button(root, text="+/-", height=5, width=7)
 
-# operation buttons // testing add sign
+# operation buttons 
 button_add = Button(root, height=60, width=60, image=add_icon, command=lambda: addSign())
 button_subtract = Button(root, height=60, width=60, image=minus_icon, command= lambda: subtractSign())
-button_multiply = Button(root, height=60, width=60, image=multiply_icon)
+button_multiply = Button(root, height=60, width=60, image=multiply_icon, command= lambda: multiplySign())
 button_divide = Button(root, text="/", height=4, width=7)
 button_exp = Button(root, text="^", height=4, width=7)
 button_sqrt = Button(root, text="r", height=4, width=7)
