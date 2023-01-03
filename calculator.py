@@ -3,6 +3,7 @@ from tkinter import *
 
 # root window
 root = Tk()
+root['background']='#e9efed'
 
 # entry widget for user
 userEntry = Entry(root, width=30, borderwidth=7, font=('Arial 20'))
@@ -13,34 +14,44 @@ def clickNumber(num):
     userEntry.delete(0, END)
     userEntry.insert(0, str(temp) + str(num))
 
-# do operation function definition, only two parameters
+# do operation function definition, only two parameters // test
 def equalOperation():
     global userInput
     global operationSign
+    temp = userEntry.get()
+    userEntry.delete(0, END)
+    if operationSign == "+":
+        userEntry.insert(0, int(temp) + int(userInput))
+
+# store user entry function
+def storeEntry():
+    global userInput 
+    userInput = userEntry.get()
+    userEntry.delete(0, END)
 
 # arithmetic sign definition
 def addSign():
-    global userInput
     global operationSign
+    operationSign = "+"
+    storeEntry()
+
 
 def subtractSign():
-    global userInput
     global operationSign
+    perationSign = "-"
+    storeEntry()
 
 def multiplySign():
     global userInput
     global operationSign
 
 def divideSign():
-    global userInput
     global operationSign
 
 def expSign():
-    global userInput
     global operationSign
 
 def sqrtSign():
-    global userInput
     global operationSign
 
 # create photoimage for each button
@@ -66,14 +77,15 @@ button_0 = Button(root, text="0", height=5, width=7)
 button_decimal = Button(root, text=".", height=5, width=7)
 button_sign = Button(root, text="+/-", height=5, width=7)
 
-# operation buttons
-button_add = Button(root, height=60, width=60, image=add_icon)
-button_subtract = Button(root, height=60, width=60, image=minus_icon)
+# operation buttons // testing add sign
+button_add = Button(root, height=60, width=60, image=add_icon, command=lambda: addSign())
+button_subtract = Button(root, height=60, width=60, image=minus_icon, command= lambda: subtractSign())
 button_multiply = Button(root, height=60, width=60, image=multiply_icon)
 button_divide = Button(root, text="/", height=4, width=7)
 button_exp = Button(root, text="^", height=4, width=7)
 button_sqrt = Button(root, text="r", height=4, width=7)
-button_equals = Button(root, height=50, width=350, image= equals_icon)
+
+button_equals = Button(root, height=50, width=350, image= equals_icon, command= lambda: equalOperation())
 
 # put onto root window
 userEntry.grid(row=0, column=0)
